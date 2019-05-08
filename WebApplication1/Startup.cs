@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using WebApplication1.Services;
+using Microsoft.Azure.Services.AppAuthentication;
 
 namespace WebApplication1
 {
