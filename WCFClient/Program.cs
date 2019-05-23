@@ -13,6 +13,7 @@ namespace WCFClient
     {
         static void Main(string[] args)
         {
+            Console.ReadLine();
             var cf = new ChannelFactory<IProblemSolver>(
               new NetTcpRelayBinding(),
               new EndpointAddress(ServiceBusEnvironment.CreateServiceUri("sb", "hjnamespace", "solver")));
