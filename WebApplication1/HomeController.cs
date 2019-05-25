@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.WindowsAzure.Storage.Table;
 using WebApplication1.Services;
+using Microsoft.Azure.ServiceBus;
+using System.Text;
+using System.Threading.Tasks;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -25,5 +27,16 @@ namespace WebApplication1
             ViewData["A1"] = seg.Results[0].Properties["Prop1"].StringValue;
             return View();
         }
+
+        public IActionResult AddToQueue(string item)
+        {
+            var bt = Encoding.Unicode.GetBytes(item);
+              new QueueClient("Endpoint=sb://hjnamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=QlVpxHO+t8ICpzjpW0qZ8eDU0fKW7zbDEvO2ROxClRs=", "hjqueue")
+                    .SendAsync(new Message(bt));
+            ViewData["A1"] = item;
+            return View("Index");
+        }
     }
+
+    
 }

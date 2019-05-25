@@ -1,27 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Azure.WebJobs;
+﻿using Microsoft.Azure.WebJobs;
 
 namespace WebJob1
 {
-    // To learn more about Microsoft Azure WebJobs SDK, please see https://go.microsoft.com/fwlink/?LinkID=320976
     class Program
     {
-        // Please set the following connection strings in app.config for this WebJob to run:
-        // AzureWebJobsDashboard and AzureWebJobsStorage
-        static void Main()
+        static void Main(string[] args)
         {
-            var config = new JobHostConfiguration();
-
+            var config = new JobHostConfiguration("DefaultEndpointsProtocol=https;AccountName=hjstorageacc;AccountKey=KxoXGHJTTvlGCEjVUsEfcC/iFE5CVLGqdHyjhvY5x5rLSbuh6UtrStk5x0QjVXF9cgg8CMDxIWWcLXXSMD/QmQ==;EndpointSuffix=core.windows.net");
             if (config.IsDevelopment)
             {
                 config.UseDevelopmentSettings();
             }
-
-            var host = new JobHost(config);
+            var host = new JobHost();
             // The following code ensures that the WebJob will be running continuously
             host.RunAndBlock();
         }
