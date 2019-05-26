@@ -12,7 +12,7 @@ namespace WebApplication1
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseApplicationInsights()
+                //.UseApplicationInsights()
                 .UseStartup<Startup>()
                 /*.UseHttpSys(options =>
                    {

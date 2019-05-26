@@ -1,4 +1,5 @@
 ﻿using Microsoft.Azure.WebJobs;
+using Microsoft.Extensions.Hosting;
 
 namespace WebJob1
 {
@@ -6,14 +7,18 @@ namespace WebJob1
     {
         static void Main(string[] args)
         {
-            var config = new JobHostConfiguration("DefaultEndpointsProtocol=https;AccountName=hjstorageacc;AccountKey=KxoXGHJTTvlGCEjVUsEfcC/iFE5CVLGqdHyjhvY5x5rLSbuh6UtrStk5x0QjVXF9cgg8CMDxIWWcLXXSMD/QmQ==;EndpointSuffix=core.windows.net");
-            if (config.IsDevelopment)
+            var builder = new HostBuilder();
+            builder.ConfigureWebJobs(b =>
             {
-                config.UseDevelopmentSettings();
+                b.AddAzureStorageCoreServices();
+                b.AddAzureStorage();
+                b.AddServiceBus((options) => options.ConnectionString = "Endpoint=sb://hjnamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=QlVpxHO+t8ICpzjpW0qZ8eDU0fKW7zbDEvO2ROxClRs=");
+            });
+            var host = builder.Build();
+            using (host)
+            {
+                host.Run();
             }
-            var host = new JobHost();
-            // The following code ensures that the WebJob will be running continuously
-            host.RunAndBlock();
         }
     }
 }
