@@ -22,7 +22,7 @@ namespace WebApplication1
         {
             var tbl = _storageService.GetTableClient().GetTableReference("MyTb1");
             var query = new TableQuery();
-            query.Where("PartitionKey eq 'tghg' ");
+            query.Where("PartitionKey eq 'Aus' ");
             var seg = tbl.ExecuteQuerySegmentedAsync(query, null).Result;
             ViewData["A1"] = seg.Results[0].Properties["Prop1"].StringValue;
             return View();

@@ -10,7 +10,7 @@ namespace WebApplication1.Services
         {
             stAcc = new CloudStorageAccount(
             new Microsoft.WindowsAzure.Storage.Auth.StorageCredentials
-               ("myacc12", "xmIw+CvPb1H1nO0b3Ds+1njRPwwhkqGQlwqXDjNZpsRPb03Zve/I3wstJzqEjZhDWgKpgaPLqemB+39jUtnZkQ=="),
+               ("hjstorageacc", "KxoXGHJTTvlGCEjVUsEfcC/iFE5CVLGqdHyjhvY5x5rLSbuh6UtrStk5x0QjVXF9cgg8CMDxIWWcLXXSMD/QmQ=="),
              true);
 
         }

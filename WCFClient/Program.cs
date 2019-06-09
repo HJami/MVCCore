@@ -21,7 +21,7 @@ namespace WCFClient
             { TokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider("RootManageSharedAccessKey", "QlVpxHO+t8ICpzjpW0qZ8eDU0fKW7zbDEvO2ROxClRs=") });
 
             var ch = cf.CreateChannel();
-            Console.WriteLine(ch.AddNumbers(4, 5));
+            Console.WriteLine(ch.AddNumbers(41, -5));
             cf.Close();
 
         }
